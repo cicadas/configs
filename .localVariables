@@ -1,0 +1,8 @@
+
+_oo_options()
+{
+  local curr_arg;
+  curr_arg=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W 'jt test t dr r rw kill watch log live dryrun run validate' -- $curr_arg ) );
+}
+complete -F _oo_options oo.sh
