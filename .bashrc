@@ -138,4 +138,5 @@ alias hctl='hadoop fs -copyToLocal'
 alias hdu='hadoop fs -du -s -h'
 alias hmv='hadoop fs -mv'
 alias hrm='hadoop fs -rm'
+alias hrmr='hadoop fs -r -skipTrash'
 
