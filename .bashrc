@@ -130,7 +130,7 @@ if [ -f ~/.localVariables ]; then
 fi
 
 alias distribute="awk -F\$'\t' '{sum[\$1]+=1;}END{for(k in sum) print k\"\t\"sum[k]}'"
-alias add="awk '{sum+=\$1}END{print sum}"
+alias add="awk '{sum+=\$1}END{print sum}'"
 alias hls='hadoop fs -ls'
 alias hcat='hadoop fs -cat'
 alias hcfl='hadoop fs -copyFromLocal'
