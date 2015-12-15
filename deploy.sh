@@ -3,7 +3,7 @@
 cp vim_runtime.tar.gz ~/
 if [[ -e ~/bin ]]; then
     cp -r bin/* ~/bin
-else:
+else
     cp -r bin ~/
 fi
 
