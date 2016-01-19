@@ -117,7 +117,7 @@ alias download='aria2c -c '
 alias CN='luit -encoding'
 alias rm='rm -i'
 alias vi='vim'
-alias ll='lls'
+alias ll='ls -l'
 #ramEator Alias Error
 alias ramEator='ps aux | awk '\''{print $2, $4, $11}'\'' | sort -k2r | head -n 20'
 alias go_virtual='ssh -p 3022 chong@127.0.0.1'
