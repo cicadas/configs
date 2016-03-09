@@ -140,3 +140,5 @@ alias hmv='hadoop fs -mv'
 alias hrm='hadoop fs -rm'
 alias hrmr='hadoop fs -rm -r -skipTrash'
 
+alias pig_log="grep 'Successfully stored'"
+
