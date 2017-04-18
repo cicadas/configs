@@ -142,3 +142,6 @@ alias hrmr='hadoop fs -rm -r -skipTrash'
 
 alias pig_log="grep 'Successfully stored'"
 
+function scppath {
+   echo `hostname -i`:`readlink -f $1`;
+}
