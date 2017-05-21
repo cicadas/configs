@@ -1,0 +1,46 @@
+#!/bin/bash
+desc="This script allows you to auto login a launcher from a predefined list.
+It reads launcher host and password from a config file (known_hosts.txt in the same directory), and auto fill passwords for the host.
+known_hosts.txt is a tab separated file, it has three columns:
+    column1: description. a short description for the host
+    column2: host. The host string format is username@host:port, and username and port can be missing. default username is the current login user, and default port is 22.
+    column3: password. if missing, user have to input the password.
+"
+
+DIR=`dirname $0`
+hosts_file=$DIR/known_hosts.txt
+
+function show_hosts {
+idx=1;
+while read line; 
+do
+    _desc=`echo "$line" | cut -d$'\t' -f1`
+    _host=`echo "$line" | cut -d$'\t' -f2`
+    _password=`echo "$line" | cut -d$'\t' -f3`
+    echo "$idx: $_desc  ($_host)" 2>&1
+    ((idx++))
+done
+}
+
+cat $hosts_file | show_hosts
+
+echo "choose a launcher to login:"
+read line
+hosts_data=`sed -n "$line,${line}p" $hosts_file`;
+
+_port=22
+_host=`echo "$hosts_data" | cut -d$'\t' -f2`
+_password=`echo "$hosts_data" | cut -d$'\t' -f3`
+
+if [[ $_host =~ :[0-9] ]];
+then
+    _port=`echo "$_host" | cut -d: -f2`;
+    _host=`echo "$_host" | cut -d: -f1`;
+fi
+
+if [[ -z $_password ]]; then
+    ssh "$_host" -p $_port
+else
+    ssh.exp "$_host" "$_password" "$_port"
+fi
+
