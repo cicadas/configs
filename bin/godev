@@ -25,12 +25,17 @@ done
 cat $hosts_file | show_hosts
 
 echo "choose a launcher to login:"
-read line
+while [[ -z $line ]];
+do
+    read line
+done
 hosts_data=`sed -n "$line,${line}p" $hosts_file`;
 
 _port=22
 _host=`echo "$hosts_data" | cut -d$'\t' -f2`
 _password=`echo "$hosts_data" | cut -d$'\t' -f3`
+
+echo "login $_host"
 
 if [[ $_host =~ :[0-9] ]];
 then
